@@ -24,9 +24,9 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let category of categories">
-                            <td>{{category.categoryId}}</td>
-                            <td>{{category.categoryName}}</td>
-                            <td class="actions-cell">
+                            <td data-label="ID">{{category.categoryId}}</td>
+                            <td data-label="Kategori adı">{{category.categoryName}}</td>
+                            <td class="actions-cell" data-label="İşlem">
                                 <button type="button" class="btn btn-warning" (click)="SelectCategory(category)">Güncelle</button>
                                 <button type="button" class="btn btn-danger" (click)="DeleteCategory(category)">Sil</button>
                             </td>
@@ -35,11 +35,19 @@
                 </table>
             </div>
         </section>
+    </div>
 
-        <section class="admin-panel admin-form-panel">
-            <div class="panel-head">
-                <span class="panel-kicker">Düzenleme</span>
-                <h3>Seçili kategoriyi güncelle</h3>
+    <div class="category-modal-backdrop" *ngIf="selectedCategory" (click)="cancelSelect()">
+        <section class="admin-panel admin-form-panel category-modal" (click)="$event.stopPropagation()">
+            <div class="panel-head category-modal-head">
+                <div>
+                    <span class="panel-kicker">Düzenleme</span>
+                    <h3>Seçili kategoriyi güncelle</h3>
+                </div>
+
+                <button type="button" class="modal-close" (click)="cancelSelect()" aria-label="Popup kapat">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
 
             <form [formGroup]="categoryUpdateForm" class="admin-form">

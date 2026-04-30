@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy, inject, PLATFORM_ID } from '@angular/core';
 import { Product } from '../../../models/productModel';
 import { ProductService } from '../../../services/product-service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { RouterModule } from '@angular/router'; 
 import { FormGroup,FormBuilder,FormControl,Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ViewChild, ElementRef } from '@angular/core';
+import Swiper from 'swiper';
+import { FreeMode } from 'swiper/modules';
 import { UploadPhotoService } from '../../../services/upload-photo-service';
 import { ResponseModel } from '../../../models/responseModel';
 import { Category } from '../../../models/categoryModel';
@@ -19,14 +21,12 @@ import { CategoryService } from '../../../services/category-service';
   templateUrl: './product-settings.html',
   styleUrl: './product-settings.css',
 })
-export class ProductSettings implements OnInit {
+export class ProductSettings implements OnInit, AfterViewInit, OnDestroy {
+ private readonly platformId = inject(PLATFORM_ID);
+ private readonly isBrowser = isPlatformBrowser(this.platformId);
  products: Product[] = [];          // Bu componentin kendi ürünler listesi
 selectedProduct: Product | null = null;
-private railTouchStartX = 0;
-private railTouchStartY = 0;
-private railStartScrollLeft = 0;
-private isRailTouchDragging = false;
-private isHorizontalRailSwipe = false;
+private productsSwiper?: Swiper;
 
 @ViewChild('fileInput') fileInput!: ElementRef;
 @ViewChild('productsRail') productsRail?: ElementRef<HTMLDivElement>;
@@ -65,6 +65,14 @@ productUpdateForm!: FormGroup;        // Reactive form
 
   }
 
+ ngAfterViewInit(): void {
+    this.setupProductsSwiper();
+  }
+
+  ngOnDestroy(): void {
+    this.productsSwiper?.destroy(true, true);
+  }
+
 constructor(private productService: ProductService,private toastrService: ToastrService,private formBuilder: FormBuilder,
   private uploadPhotoService: UploadPhotoService,private categoryService: CategoryService) {}
 
@@ -83,66 +91,52 @@ getProductImageUrl(imageName: string | null | undefined): string {
 }
 
 scrollProducts(direction: 'left' | 'right') {
-  const rail = this.productsRail?.nativeElement;
-
-  if (!rail) {
+  if (!this.productsSwiper) {
     return;
   }
 
-  const scrollAmount = Math.max(rail.clientWidth * 0.78, 260);
+  if (direction === 'right') {
+    this.productsSwiper.slideNext();
+    return;
+  }
 
-  rail.scrollBy({
-    left: direction === 'right' ? scrollAmount : -scrollAmount,
-    behavior: 'smooth',
+  this.productsSwiper.slidePrev();
+}
+
+private setupProductsSwiper() {
+  if (!this.isBrowser || !this.productsRail?.nativeElement) {
+    return;
+  }
+
+  if (this.productsSwiper) {
+    this.productsSwiper.update();
+    return;
+  }
+
+  this.productsSwiper = new Swiper(this.productsRail.nativeElement, {
+    modules: [FreeMode],
+    slidesPerView: 'auto',
+    spaceBetween: 12,
+    freeMode: true,
+    breakpoints: {
+      769: {
+        spaceBetween: 18,
+      },
+    },
   });
 }
 
-onRailTouchStart(event: TouchEvent) {
-  const rail = this.productsRail?.nativeElement;
-  const touch = event.touches[0];
-
-  if (!rail || !touch) {
+private refreshProductsSwiper() {
+  if (!this.isBrowser) {
     return;
   }
 
-  this.railTouchStartX = touch.clientX;
-  this.railTouchStartY = touch.clientY;
-  this.railStartScrollLeft = rail.scrollLeft;
-  this.isRailTouchDragging = true;
-  this.isHorizontalRailSwipe = false;
+  setTimeout(() => {
+    this.setupProductsSwiper();
+    this.productsSwiper?.update();
+    this.productsSwiper?.slideTo(0, 0);
+  });
 }
-
-onRailTouchMove(event: TouchEvent) {
-  const rail = this.productsRail?.nativeElement;
-  const touch = event.touches[0];
-
-  if (!rail || !touch || !this.isRailTouchDragging) {
-    return;
-  }
-
-  const deltaX = touch.clientX - this.railTouchStartX;
-  const deltaY = touch.clientY - this.railTouchStartY;
-
-  if (!this.isHorizontalRailSwipe) {
-    if (Math.abs(deltaX) <= Math.abs(deltaY)) {
-      return;
-    }
-
-    this.isHorizontalRailSwipe = true;
-  }
-
-  if (event.cancelable) {
-    event.preventDefault();
-  }
-
-  rail.scrollLeft = this.railStartScrollLeft - deltaX;
-}
-
-onRailTouchEnd() {
-  this.isRailTouchDragging = false;
-  this.isHorizontalRailSwipe = false;
-}
-
 
 
 loadAllCategories()
@@ -176,6 +170,7 @@ loadAllCategories()
 loadProducts() { // ürünleri  tabloya bağlama
     this.productService.getAllProducts().subscribe(result => {
       this.products = result.data;  // tabloya burada bağlanır
+      this.refreshProductsSwiper();
     });
   }
 
@@ -185,6 +180,7 @@ getProductsByCategory(categoryId: number) {
   this.productService.getProductsByCategoryId(categoryId)
     .subscribe(res => {
       this.products = res.data;
+      this.refreshProductsSwiper();
     });
 }
 

@@ -34,13 +34,9 @@
                 </div>
             </div>
 
-            <div class="products-swiper-shell" *ngIf="products.length > 0; else emptyProductsState">
-                <div class="products-swiper-track" #productsRail
-                    (touchstart)="onRailTouchStart($event)"
-                    (touchmove)="onRailTouchMove($event)"
-                    (touchend)="onRailTouchEnd()"
-                    (touchcancel)="onRailTouchEnd()">
-                    <article class="product-slide-card" *ngFor="let product of products">
+            <div class="products-swiper-shell swiper desktop-products-swiper" #productsRail *ngIf="products.length > 0; else emptyProductsState">
+                <div class="products-swiper-track swiper-wrapper">
+                    <article class="product-slide-card swiper-slide" *ngFor="let product of products">
                         <div class="product-slide-media">
                             <img [src]="getProductImageUrl(product.image)" [alt]="product.productName">
                             <span class="product-slide-id">#{{ product.productId }}</span>
@@ -77,17 +73,56 @@
                 </div>
             </div>
 
+            <div class="products-mobile-list" *ngIf="products.length > 0">
+                <article class="mobile-product-card" *ngFor="let product of products">
+                    <img class="mobile-product-image" [src]="getProductImageUrl(product.image)" [alt]="product.productName">
+
+                    <div class="mobile-product-body">
+                        <div class="mobile-product-head">
+                            <div>
+                                <span class="mobile-product-category">{{ getCategoryName(product.categoryId) }}</span>
+                                <h4>{{ product.productName }}</h4>
+                            </div>
+
+                            <span class="featured-badge" [class.featured-badge-active]="product.isFeatured">
+                                {{ product.isFeatured ? 'Favori' : 'Standart' }}
+                            </span>
+                        </div>
+
+                        <p class="mobile-product-description">{{ product.description }}</p>
+
+                        <div class="mobile-product-meta">
+                            <span>#{{ product.productId }}</span>
+                            <strong>₺{{ product.price }}</strong>
+                        </div>
+
+                        <div class="actions-cell mobile-product-actions">
+                            <button type="button" class="btn btn-warning" (click)="SelectProduct(product)">Güncelle</button>
+                            <button type="button" class="btn btn-danger" (click)="DeleteProduct(product)">Sil</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
             <ng-template #emptyProductsState>
                 <div class="empty-state">
                     Seçilen filtre için gösterilecek ürün bulunamadı.
                 </div>
             </ng-template>
         </section>
+    </div>
 
-        <section class="admin-panel admin-form-panel">
-            <div class="panel-head">
-                <span class="panel-kicker">Düzenleme</span>
-                <h3>Seçili ürünü güncelle</h3>
+    <div class="product-modal-backdrop" *ngIf="selectedProduct" (click)="cancelSelect()">
+        <section class="admin-panel admin-form-panel product-modal" (click)="$event.stopPropagation()">
+            <div class="panel-head product-modal-head">
+                <div>
+                    <span class="panel-kicker">Düzenleme</span>
+                    <h3>Seçili ürünü güncelle</h3>
+                </div>
+
+                <button type="button" class="modal-close" (click)="cancelSelect()" aria-label="Popup kapat">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
 
             <form [formGroup]="productUpdateForm" class="admin-form">

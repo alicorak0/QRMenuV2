@@ -95,10 +95,17 @@ button {
 	border-radius: 18px;
 }
 
-.login__icon,
-.login__eye {
+
+.login__icon {
 	font-size: 1.1rem;
 	color: #f4e4c2;
+}
+
+.login__input[type="password"]::-ms-reveal {
+	cursor: pointer;
+	margin-right: -1rem;
+	opacity: 0.9;
+	filter: brightness(0) saturate(100%) invert(89%) sepia(12%) saturate(641%) hue-rotate(331deg) brightness(102%) contrast(92%);
 }
 
 .login__box-input {
@@ -123,15 +130,8 @@ button {
 	transition: top 0.3s ease, font-size 0.3s ease;
 }
 
-.login__eye {
-	position: absolute;
-	top: 20px;
-	right: 0;
-	cursor: pointer;
-}
-
 .login__box:nth-child(2) input {
-	padding-right: 1.8rem;
+	padding-right: 2.8rem;
 }
 
 .login__check,

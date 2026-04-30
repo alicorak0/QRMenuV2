@@ -136,7 +136,7 @@ main {
 .product-title {
   margin: 0 0 8px;
   text-align: center;
-  font-size: clamp(1.45rem, 1.7vw, 2.05rem);
+  font-size: clamp(1.28rem, 1.45vw, 1.78rem);
   font-weight: 700;
   line-height: 1.08;
   color: #3b3b42;
@@ -147,7 +147,7 @@ main {
   flex: 1;
   max-width: 90%;
   margin: 0 auto 14px;
-  font-size: 0.82rem;
+  font-size: 0.74rem;
   font-weight: 600;
   color: #727272;
   text-align: center;
@@ -281,7 +281,7 @@ main {
 
   .product-title {
     margin-bottom: 8px;
-    font-size: 1.08rem;
+    font-size: 1.24rem;
   }
 
   .product-description {

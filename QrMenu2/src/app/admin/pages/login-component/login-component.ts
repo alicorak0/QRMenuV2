@@ -1,16 +1,11 @@
 import { Component } from '@angular/core';
-import { AfterViewInit, ViewEncapsulation } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 //auth service gelecek
-import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../../services/auth-service';
-import { jwtDecode } from 'jwt-decode';
 import { Router } from '@angular/router';
-import { MeResponseModel } from '../../../models/meResponseModel';
-
-declare var LoginJs: any;
 
 
 @Component({
@@ -19,22 +14,12 @@ declare var LoginJs: any;
   templateUrl: './login-component.html',
   styleUrl: './login-component.css',
 })
-export class LoginComponent implements AfterViewInit {
+export class LoginComponent {
 
   loginForm!: FormGroup;
   constructor(private router: Router, private formBuilder: FormBuilder, private authService: AuthService, private toastrService: ToastrService) {
 
     this.createLoginForm();
-  }
-
-
-
-
-
-  ngAfterViewInit() {
-    if (LoginJs) {
-      LoginJs();
-    }
   }
 
   createLoginForm() {

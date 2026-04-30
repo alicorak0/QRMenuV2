@@ -154,11 +154,18 @@
   transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
 }
 
-.menu-list li:hover,
 .menu-list li.active {
   background: #c8a46b;
   color: #ffffff;
   transform: translateY(-1px);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .menu-list li:hover {
+    background: #c8a46b;
+    color: #ffffff;
+    transform: translateY(-1px);
+  }
 }
 
 .menu-list i {

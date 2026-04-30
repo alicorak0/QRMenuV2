@@ -29,22 +29,22 @@
             <div class="menu-title" *ngIf="isSidebarOpen">Yönetim</div>
 
             <ul class="menu-list">
-                <li routerLinkActive="active" [routerLink]="['category-add']" (click)="closeSidebar()">
+                <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['category-add']" (click)="closeSidebar()">
                     <i class="fa-solid fa-folder-plus"></i>
                     <span *ngIf="isSidebarOpen">Kategori Ekle</span>
                 </li>
 
-                <li routerLinkActive="active" [routerLink]="['category-settings']" (click)="closeSidebar()">
+                <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['category-settings']" (click)="closeSidebar()">
                     <i class="fa-solid fa-pen-to-square"></i>
                     <span *ngIf="isSidebarOpen">Kategori Düzenle</span>
                 </li>
 
-                <li routerLinkActive="active" [routerLink]="['product-add']" (click)="closeSidebar()">
+                <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['product-add']" (click)="closeSidebar()">
                     <i class="fa-solid fa-bowl-food"></i>
                     <span *ngIf="isSidebarOpen">Ürün Ekle</span>
                 </li>
 
-                <li routerLinkActive="active" [routerLink]="['product-settings']" (click)="closeSidebar()">
+                <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['product-settings']" (click)="closeSidebar()">
                     <i class="fa-solid fa-sliders"></i>
                     <span *ngIf="isSidebarOpen">Ürün Düzenle</span>
                 </li>

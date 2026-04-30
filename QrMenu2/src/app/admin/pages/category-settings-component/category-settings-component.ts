@@ -63,9 +63,7 @@ constructor(private categoryService: CategoryService,private toastrService: Toas
   this.categoryService.updateCategory(productData).subscribe({
     next: (response) => {
       this.toastrService.success("Kategori başarıyla güncellendi");
-      // Gerekirse formu sıfırla veya sayfayı yenile
-      this.categoryUpdateForm.reset();
-      // Veya ana listeyi güncelle
+      this.cancelSelect();
       this.loadCategories(); 
     },
     error: (err) => {
