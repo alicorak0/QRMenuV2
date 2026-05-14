@@ -7,7 +7,8 @@
 
         <div class="filter-box">
             <label for="productFilter">Kategori filtresi</label>
-            <select id="productFilter" class="form-control" [(ngModel)]="filteredCategoryId" (change)="onCategoryChange()">
+            <select id="productFilter" class="form-control" [(ngModel)]="filteredCategoryId"
+                (change)="onCategoryChange()">
                 <option [ngValue]="null">Tümü</option>
                 <option *ngFor="let cat of allCategories" [ngValue]="cat.categoryId">
                     {{ cat.categoryName }}
@@ -25,21 +26,23 @@
                 </div>
 
                 <div class="swiper-controls" *ngIf="products.length > 0">
-                    <button type="button" class="swiper-nav-btn" (click)="scrollProducts('left')" aria-label="Önceki ürünler">
+                    <button type="button" class="swiper-nav-btn" (click)="scrollProducts('left')"
+                        aria-label="Önceki ürünler">
                         <i class="fa-solid fa-arrow-left"></i>
                     </button>
-                    <button type="button" class="swiper-nav-btn" (click)="scrollProducts('right')" aria-label="Sonraki ürünler">
+                    <button type="button" class="swiper-nav-btn" (click)="scrollProducts('right')"
+                        aria-label="Sonraki ürünler">
                         <i class="fa-solid fa-arrow-right"></i>
                     </button>
                 </div>
             </div>
 
-            <div class="products-swiper-shell swiper desktop-products-swiper" #productsRail *ngIf="products.length > 0; else emptyProductsState">
+            <div class="products-swiper-shell swiper desktop-products-swiper" #productsRail
+                *ngIf="products.length > 0; else emptyProductsState">
                 <div class="products-swiper-track swiper-wrapper">
                     <article class="product-slide-card swiper-slide" *ngFor="let product of products">
                         <div class="product-slide-media">
                             <img [src]="getProductImageUrl(product.image)" [alt]="product.productName">
-                            <span class="product-slide-id">#{{ product.productId }}</span>
                         </div>
 
                         <div class="product-slide-body">
@@ -65,8 +68,10 @@
                             </div>
 
                             <div class="actions-cell product-slide-actions">
-                                <button type="button" class="btn btn-warning" (click)="SelectProduct(product)">Güncelle</button>
-                                <button type="button" class="btn btn-danger" (click)="DeleteProduct(product)">Sil</button>
+                                <button type="button" class="btn btn-warning"
+                                    (click)="SelectProduct(product)">Güncelle</button>
+                                <button type="button" class="btn btn-danger"
+                                    (click)="DeleteProduct(product)">Sil</button>
                             </div>
                         </div>
                     </article>
@@ -75,7 +80,8 @@
 
             <div class="products-mobile-list" *ngIf="products.length > 0">
                 <article class="mobile-product-card" *ngFor="let product of products">
-                    <img class="mobile-product-image" [src]="getProductImageUrl(product.image)" [alt]="product.productName">
+                    <img class="mobile-product-image" [src]="getProductImageUrl(product.image)"
+                        [alt]="product.productName">
 
                     <div class="mobile-product-body">
                         <div class="mobile-product-head">
@@ -92,12 +98,12 @@
                         <p class="mobile-product-description">{{ product.description }}</p>
 
                         <div class="mobile-product-meta">
-                            <span>#{{ product.productId }}</span>
                             <strong>₺{{ product.price }}</strong>
                         </div>
 
                         <div class="actions-cell mobile-product-actions">
-                            <button type="button" class="btn btn-warning" (click)="SelectProduct(product)">Güncelle</button>
+                            <button type="button" class="btn btn-warning"
+                                (click)="SelectProduct(product)">Güncelle</button>
                             <button type="button" class="btn btn-danger" (click)="DeleteProduct(product)">Sil</button>
                         </div>
                     </div>
@@ -128,7 +134,8 @@
             <form [formGroup]="productUpdateForm" class="admin-form">
                 <div class="field-group">
                     <label for="productIdUpdate">ID</label>
-                    <input id="productIdUpdate" type="number" class="form-control" readonly formControlName="productId" />
+                    <input id="productIdUpdate" type="number" class="form-control" readonly
+                        formControlName="productId" />
                 </div>
 
                 <div class="field-group">
@@ -138,15 +145,23 @@
 
                 <div class="field-group">
                     <label for="productCategoryUpdate">Kategori</label>
-                    <select id="productCategoryUpdate" class="form-control" [(ngModel)]="selectedCategoryId" name="category" formControlName="categoryId">
-                        <option [ngValue]="null" value="0" disabled>Seçiniz</option>
-                        <option *ngFor="let cat of allCategories" [ngValue]="cat.categoryId">{{cat.categoryName}}</option>
+                    <select id="productCategoryUpdate" class="form-control" formControlName="categoryId">
+
+                        <option [ngValue]="null" disabled>Seçiniz</option>
+
+                        <option *ngFor="let cat of allCategories" [ngValue]="cat.categoryId">
+
+                            {{ cat.categoryName }}
+
+                        </option>
+
                     </select>
                 </div>
 
                 <div class="field-group">
                     <label for="productDescriptionUpdate">Açıklama</label>
-                    <input id="productDescriptionUpdate" type="text" class="form-control" formControlName="description" />
+                    <input id="productDescriptionUpdate" type="text" class="form-control"
+                        formControlName="description" />
                 </div>
 
                 <div class="field-group">
@@ -169,10 +184,18 @@
                 </div>
 
                 <div class="field-group">
-                    <label for="imageUpdate">Görsel</label>
-                    <input id="imageUpdate" type="file" class="form-control" #fileInput (change)="onFileSelected($event)">
+                    <label>Görsel</label>
+
+                    <input type="file" class="form-control" #fileInput (change)="onFileSelected($event)">
+
                     <div class="image-preview" *ngIf="previewUrl">
                         <img [src]="previewUrl" alt="Preview">
+
+                       <button type="button" class="btn btn-danger btn-sm mt-2"
+        (click)="removeImage()"
+        *ngIf="previewUrl && !isDefaultImage">
+  Fotoğrafı kaldır
+</button>
                     </div>
                 </div>
 

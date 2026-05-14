@@ -37,8 +37,8 @@ previewUrl: string | null = null; // ön izleme
 
 allCategories :Category[] =[]; // kategoriler dropdown için
 
-
-
+imageRemoved: boolean = false; // resim kaldırıldı mı kontrolü
+isDefaultImage: boolean = false; // varsayılan resim mi kontrolü (Boş resim için)
 
 // dosya seçim
 onFileSelected(event: any) {
@@ -79,6 +79,18 @@ constructor(private productService: ProductService,private toastrService: Toastr
 
 selectedCategoryId: number | null = null; // Ürünleri güncellemek için seçilen kategorinin ID'si
 filteredCategoryId: number | null = null; // Dropdown'da seçilen kategorinin ID'si
+
+removeImage() {
+  this.selectedFile = null;
+  this.previewUrl = `https://localhost:44311/uploads/products/noPhoto.jpg`;
+  this.imageRemoved = true;
+  this.isDefaultImage = true;
+
+  if (this.fileInput) {
+    this.fileInput.nativeElement.value = '';
+  }
+}
+
 
 getCategoryName(categoryId: number): string {
   return this.allCategories.find(category => category.categoryId === categoryId)?.categoryName || `Kategori #${categoryId}`;
@@ -220,8 +232,10 @@ onCategoryChange() {
 
 
   SelectProduct(product: Product) {
+
+
      this.selectedProduct = product;
-console.log(this.selectedCategoryId);
+console.log(product.categoryId +"aşli");
 
       this.productUpdateForm.patchValue({
         productId: product.productId,
@@ -234,10 +248,13 @@ console.log(this.selectedCategoryId);
       });
  // Eğer ürünün resmi varsa previewUrl olarak ata
   // Mevcut resim preview
-  this.previewUrl = product.image 
-      ? "https://localhost:44311/uploads/products/" + product.image
-      : null;
+ this.previewUrl = product.image
+  ? `https://localhost:44311/uploads/products/${product.image}`
+  : `https://localhost:44311/uploads/products/noPhoto.jpg`;
 
+this.isDefaultImage = product.image === "noPhoto.jpg";
+  
+  this.imageRemoved = false;
   this.selectedFile = null; // input boş kalır
   }
 
@@ -247,6 +264,8 @@ console.log(this.selectedCategoryId);
     this.previewUrl = null;
     this.selectedFile = null;
    
+      this.imageRemoved = false;
+
       this.fileInput.nativeElement.value = ''; // file input sıfırla
 
   }
@@ -261,15 +280,17 @@ updateProduct() {
 
   const productData = this.productUpdateForm.value;
 
-  // Eğer yeni resim seçildiyse
-  if (this.selectedFile) {
+  // 1) Foto silindiyse
+  if (this.imageRemoved && !this.selectedFile) {
+    productData.image = "noPhoto.jpg";
+  }
 
-    const formData = new FormData();
-    formData.append("image", this.selectedFile);
+  // 2) Yeni foto yüklendiyse
+  if (this.selectedFile) {
 
     this.uploadPhotoService.uploadImage(this.selectedFile).subscribe((res: any) => {
 
-      productData.image = res.fileName; // uploaddan gelen isim
+      productData.image = res.fileName;
 
       this.productService.updateProduct(productData).subscribe(() => {
         this.toastrService.success("Ürün güncellendi");
@@ -279,21 +300,16 @@ updateProduct() {
 
     });
 
+    return;
   }
 
-  // Yeni resim seçilmediyse
-  else {
-
-    productData.image = this.selectedProduct?.image;
-                                                         // update kısmı
-    this.productService.updateProduct(productData).subscribe(() => {
-      this.toastrService.success("Ürün güncellendi");
-      this.loadProducts();
-      this.cancelSelect();
-    });
-
-  }
-
+  // 3) Normal update (foto değişmedi)
+  this.productService.updateProduct(productData).subscribe(() => {
+    this.toastrService.success("Ürün güncellendi");
+    this.loadProducts();
+    this.cancelSelect();
+  });
 }
+
 
 }
