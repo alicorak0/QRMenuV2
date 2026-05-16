@@ -8,7 +8,7 @@
   margin: 0;
   padding: 14px 16px;
   border: 2px solid rgba(200, 164, 107, 0.2);
-  border-radius: 12px;
+  border-radius: 10px;
   background: #ffffff;
   color: #555;
   cursor: pointer;
@@ -117,7 +117,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
+  border-radius: 10px;
   background: #f3f3f3;
   color: #444;
   cursor: pointer;
@@ -134,7 +134,7 @@
   width: 100%;
   box-sizing: border-box;
   padding: 13px 44px 13px 14px;
-  border-radius: 12px;
+  border-radius: 10px;
   border: 1px solid rgba(200, 164, 107, 0.5);
   background: #ffffff;
   color: #333;
@@ -169,7 +169,7 @@
   padding: 14px;
   background: #ffffff;
   border: 1px solid rgba(200, 164, 107, 0.12);
-  border-radius: 12px;
+  border-radius: 10px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
 }
 
@@ -223,7 +223,7 @@
   width: 34px;
   height: 34px;
   border: none;
-  border-radius: 50%;
+  border-radius: 10px;
   background: #f0f0f0;
   color: #333;
   cursor: pointer;
@@ -303,7 +303,7 @@
 
 .category-divider .badge {
   padding: 2px 8px;
-  border-radius: 20px;
+  border-radius: 10px;
   background: rgba(255, 255, 255, 0.2);
   font-size: 11px;
 }

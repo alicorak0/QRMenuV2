@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from '../models/productModel';
-import { HttpClientModule } from '@angular/common/http'; // ← ekle
 import { SingleResponseModel } from '../models/singleResponseModel';
 import { ResponseModel } from '../models/responseModel';
+import { API_ROOT_URL } from '../constants/categoryConstants';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-    private apiUrl = 'https://localhost:44311/api/products/'; // backend endpoint
+  private apiUrl = `${API_ROOT_URL}/products/`;
 
   constructor(private http: HttpClient) { }
 
@@ -30,7 +30,7 @@ export class ProductService {
   }
 
   productSearch(name: string):Observable<SingleResponseModel<Product[]>> {
-    return this.http.get<SingleResponseModel<Product[]>>(`https://localhost:44311/api/products/search?name=${name}`);
+    return this.http.get<SingleResponseModel<Product[]>>(`${this.apiUrl}search?name=${name}`);
   }
 
 

@@ -67,6 +67,7 @@
     margin: 0 10px;
     font-size: 16px;
     cursor: pointer;
+    border-radius: 10px;
 }
 
 .btn:hover {
@@ -180,11 +181,12 @@
     font-size: 42px;
     font-weight: 400;
     letter-spacing: 2px;
+    margin-top: 12px;
 }
 
 .right h2 {
     font-size: 20px;
-    font-weight: 350;
+    font-weight: 400;
     text-align: justify;
 }
 
@@ -203,7 +205,7 @@
 
 .gallery-card {
     overflow: hidden;
-    border-radius: 15px;
+    border-radius: 10px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
     transition: all .4s ease;
 }
@@ -262,7 +264,7 @@
     margin: 50px 100px;
     height: auto;
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
+    border-radius: 10px;
     padding: 30px 10px;
     background: #8c8c8c;
     display: flex;
@@ -284,7 +286,8 @@
     color: #ffffff;
     font-weight: 600;
     text-decoration: none;
-    border-radius: 12px;
+    border-radius: 10px;
+    font-size: 20px;
     transition: transform .25s ease, filter .25s ease;
 }
 
@@ -300,6 +303,7 @@
     text-decoration: none;
     text-align: center;
     opacity: 0.85;
+    font-size: 20px;
     transition: opacity .2s;
 }
 
@@ -358,7 +362,7 @@
         font-style: italic;
         color: #d6b37a;
         font-size: 10px;
-        margin-bottom: 2px;
+        margin-bottom: 10px;
     }
 
     .hero-content h1 {
@@ -421,11 +425,12 @@
         font-size: 25px;
         font-weight: 400;
         letter-spacing: 2px;
+        margin-top: 18px;
     }
 
     .right h2 {
         font-size: 18px;
-        font-weight: 350;
+        font-weight: 400;
         text-align: justify;
     }
 
@@ -492,7 +497,7 @@
 
     .gallery-card {
         overflow: hidden;
-        border-radius: 15px;
+        border-radius: 10px;
         box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
         transition: all .4s ease;
     }
@@ -531,18 +536,18 @@
         width: 100%;
         margin: 0;
         padding: 18px 12px;
-        border-radius: 16px;
+        border-radius: 10px;
     }
 
     .review-btn {
         width: 82%;
         padding: 14px 16px;
-        font-size: 15px;
+        font-size: 16px;
     }
 
     .review-link {
         margin-top: 10px;
-        font-size: 15px;
+        font-size: 16px;
     }
 
     .rate-us {

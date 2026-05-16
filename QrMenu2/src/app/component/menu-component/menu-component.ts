@@ -11,6 +11,7 @@ import { FreeMode } from 'swiper/modules';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { CategoryService } from '../../services/category-service';
 import { SignalService } from '../../services/signal-service';
+import { PRODUCT_UPLOADS_BASE_URL } from '../../constants/categoryConstants';
 
 @Component({
   selector: 'app-menu-component',
@@ -21,6 +22,7 @@ import { SignalService } from '../../services/signal-service';
 export class MenuComponent implements AfterViewInit {
   private readonly platformId = inject(PLATFORM_ID);
   private readonly isBrowser = isPlatformBrowser(this.platformId);
+  readonly productUploadsBaseUrl = PRODUCT_UPLOADS_BASE_URL;
 
   isMenuOpen = false;
 

@@ -1,6 +1,7 @@
 import { Injectable, inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import * as signalR from '@microsoft/signalr';
+import { MENU_HUB_URL } from '../constants/categoryConstants';
 
 
 @Injectable({
@@ -19,7 +20,7 @@ export class SignalService {
     }
 
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl('https://localhost:44311/menuhub') // Backend hub endpoint
+      .withUrl(MENU_HUB_URL)
       .withAutomaticReconnect()
       .build();
 

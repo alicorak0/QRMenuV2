@@ -73,7 +73,7 @@ body {
   height: 2px;
   width: 20px;
   background: #fff;
-  border-radius: 3px;
+  border-radius: 10px;
   margin: 2px;
 }
 
@@ -103,7 +103,7 @@ body {
 
 
 
-/* Mobil (<600px) → 1 sütun */
+/* Mobil (<600px) Ã¢â€ â€™ 1 sÃƒÂ¼tun */
 @media (max-width: 600px) {
 
   /* hEADER */
@@ -136,14 +136,14 @@ body {
 
 
 
-  /* Hamburger görünür */
+  /* Hamburger gÃƒÂ¶rÃƒÂ¼nÃƒÂ¼r */
 
   .hamburger {
     display: flex;
     padding-right: 10px;
   }
 
-  /* Menü gizlenir */
+  /* MenÃƒÂ¼ gizlenir */
   .nav {
     position: absolute;
     display: none;

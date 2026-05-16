@@ -52,7 +52,7 @@
           <span class="product-price">₺{{ product.price }}</span>
         </div>
         <div class="product-image-wrapper">
-          <img [src]="'https://localhost:44311/uploads/products/' + product.image" [alt]="product.productName">
+          <img [src]="productUploadsBaseUrl + '/' + product.image" [alt]="product.productName">
           <button class="add-btn">+</button>
         </div>
       </div>

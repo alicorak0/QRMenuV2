@@ -7,12 +7,13 @@ import { jwtDecode} from 'jwt-decode';
 import { BehaviorSubject, Observable,of } from 'rxjs';
 import { MeResponseModel } from '../models/meResponseModel';
 import { map, catchError } from 'rxjs/operators';
+import { API_ROOT_URL } from '../constants/categoryConstants';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-    apiUrl="https://localhost:44311/api/auth/"
+  apiUrl=`${API_ROOT_URL}/auth/`
 
         constructor(private httpClient:HttpClient){}
 

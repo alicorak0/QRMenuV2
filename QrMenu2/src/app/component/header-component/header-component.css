@@ -80,7 +80,7 @@ body {
   height: 2px;
   width: 20px;
   background: #fff;
-  border-radius: 3px;
+  border-radius: 10px;
   margin: 2px;
 }
 
@@ -125,7 +125,7 @@ body {
     padding-right: 10px;
   }
 
-  /* Menü gizlenir */
+  /* MenÃƒÂ¼ gizlenir */
   .nav {
     position: absolute;
     display: none;

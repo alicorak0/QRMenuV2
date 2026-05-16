@@ -4,13 +4,14 @@ import { ResponseModel } from '../models/responseModel';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Category } from '../models/categoryModel';
+import { API_ROOT_URL } from '../constants/categoryConstants';
 
 
 @Injectable({
   providedIn: 'root',
 })
 export class CategoryService {
-      private apiUrl = 'https://localhost:44311/api/categories/'; // backend endpoint
+  private apiUrl = `${API_ROOT_URL}/categories/`;
 
   constructor(private http: HttpClient) { }
 

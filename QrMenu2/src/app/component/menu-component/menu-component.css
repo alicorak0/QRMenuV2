@@ -65,7 +65,7 @@ body {
 
 
 
-/* SLİDER */
+/* SLÃ„Â°DER */
 
 .popular-slider {
   width: 100%;
@@ -99,7 +99,7 @@ body {
 
 .swiper-slide {
   flex: 0 0 auto;
-  /* Kart sabit genişlik */
+  /* Kart sabit geniÃ…Å¸lik */
 }
 
 .product-card {
@@ -120,7 +120,7 @@ body {
   height: 220px;
   width: 340px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 10px;
   margin-right: 16px;
 }
 
@@ -160,7 +160,7 @@ body {
   color: #c8a46b;
 }
 
-/* Tablet (600px - 900px) → 2 sütun */
+/* Tablet (600px - 900px) Ã¢â€ â€™ 2 sÃƒÂ¼tun */
 @media (max-width: 1300px) {
 
   .swiper-wrapper {
@@ -188,7 +188,7 @@ body {
     height: 150px;
     width: 210px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 10px;
     margin-right: 0;
   }
 
@@ -271,7 +271,7 @@ body {
 }
 
 
-/* Mobil (<600px) → 1 sütun */
+/* Mobil (<600px) Ã¢â€ â€™ 1 sÃƒÂ¼tun */
 @media (max-width: 600px) {
 
   /* hEADER */
@@ -350,23 +350,23 @@ body {
 
   .product-card {
     width: 350px;
-    height: 190px;
+    height: 168px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     background: #fff;
     border-radius: 10px;
-    padding: 10px;
+    padding: 6px 10px;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
     overflow: hidden;
   }
 
   .product-img {
-    height: 140px;
+    height: 124px;
     width: 210px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 10px;
     margin-right: 12px;
   }
 
@@ -382,13 +382,13 @@ body {
   }
 
   .product-info h4 {
-    margin-top: 10px;
+    margin-top: 4px;
     font-size: 17px;
     font-weight: 700;
   }
 
   .product-info .description {
-    margin-top: 4px;
+    margin-top: 2px;
     font-size: 10px;
     font-weight: 500;
     color: #555;
@@ -397,7 +397,7 @@ body {
   }
 
   .product-info .price {
-    margin-top: 5px;
+    margin-top: 3px;
     font-size: 18px;
     font-weight: 600;
     color: #c8a46b;

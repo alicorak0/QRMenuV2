@@ -12,6 +12,7 @@ import { ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { Category } from '../../models/categoryModel';
 import { CategoryService } from '../../services/category-service';
 import { SignalService } from '../../services/signal-service';
+import { PRODUCT_UPLOADS_BASE_URL } from '../../constants/categoryConstants';
 
 @Component({
   selector: 'app-products-component',
@@ -23,6 +24,7 @@ import { SignalService } from '../../services/signal-service';
 export class ProductsComponent implements AfterViewInit {
   private readonly platformId = inject(PLATFORM_ID);
   private readonly isBrowser = isPlatformBrowser(this.platformId);
+  readonly productUploadsBaseUrl = PRODUCT_UPLOADS_BASE_URL;
   @ViewChild('bgVideo') bgVideo!: ElementRef<HTMLVideoElement>;
 
   allCategories: Category[] = [];

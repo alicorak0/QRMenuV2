@@ -5,6 +5,7 @@ import { AuthService } from '../../../services/auth-service';
 import { Router } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
 import { RouterModule } from '@angular/router';
+import { PRODUCT_UPLOADS_BASE_URL } from '../../../constants/categoryConstants';
 
 @Component({
   selector: 'app-admin-panel-component',
@@ -14,6 +15,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './admin-panel-component.css',
 })
 export class AdminPanelComponent implements OnInit {
+  readonly productUploadsBaseUrl = PRODUCT_UPLOADS_BASE_URL;
 
 
 

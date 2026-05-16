@@ -1,6 +1,7 @@
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { PRODUCT_UPLOADS_BASE_URL } from '../../constants/categoryConstants';
 
 @Component({
   imports: [RouterModule, CommonModule],
@@ -13,6 +14,7 @@ import { CommonModule } from '@angular/common';
 
 
 export class MainMenuComponent implements AfterViewInit {
+  readonly productUploadsBaseUrl = PRODUCT_UPLOADS_BASE_URL;
 
   @ViewChild('bgVideo')
   bgVideo!: ElementRef<HTMLVideoElement>;

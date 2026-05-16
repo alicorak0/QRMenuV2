@@ -6,6 +6,7 @@ import { ProductService } from '../../services/product-service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SingleResponseModel } from '../../models/singleResponseModel';
+import { PRODUCT_UPLOADS_BASE_URL } from '../../constants/categoryConstants';
 
 @Component({
   selector: 'app-product-search-component',
@@ -15,6 +16,7 @@ import { SingleResponseModel } from '../../models/singleResponseModel';
   styleUrl: './product-search-component.css',
 })
 export class ProductSearchComponent implements OnInit {
+  readonly productUploadsBaseUrl = PRODUCT_UPLOADS_BASE_URL;
   searchName: string = '';
   allCategories: Category[] = []; // Tüm kategoriler burada duracak
   groupedProducts: { [key: string]: Product[] } = {}; // Gruplanmış hali

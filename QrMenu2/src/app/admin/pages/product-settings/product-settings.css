@@ -56,7 +56,7 @@
 .admin-panel {
   background: #ffffff;
   border: 1px solid rgba(200, 164, 107, 0.14);
-  border-radius: 24px;
+  border-radius: 10px;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.05);
 }
 
@@ -94,7 +94,7 @@
   width: 42px;
   height: 42px;
   border: 1px solid rgba(200, 164, 107, 0.18);
-  border-radius: 999px;
+  border-radius: 10px;
   background: #f8f5ef;
   color: #6a5a42;
   font-size: 1.6rem;
@@ -141,7 +141,7 @@
   width: 42px;
   height: 42px;
   border: 1px solid rgba(200, 164, 107, 0.18);
-  border-radius: 14px;
+  border-radius: 10px;
   background: #f8f5ef;
   color: #8c6b35;
   cursor: pointer;
@@ -195,12 +195,12 @@
 
 .products-swiper-shell::-webkit-scrollbar-track {
   background: rgba(244, 239, 230, 0.95);
-  border-radius: 999px;
+  border-radius: 10px;
 }
 
 .products-swiper-shell::-webkit-scrollbar-thumb {
   background: rgba(200, 164, 107, 0.55);
-  border-radius: 999px;
+  border-radius: 10px;
   border: 2px solid rgba(244, 239, 230, 0.95);
 }
 
@@ -215,7 +215,7 @@
   width: 560px;
   height: 320px;
   padding: 16px;
-  border-radius: 20px;
+  border-radius: 10px;
   border: 1px solid rgba(200, 164, 107, 0.14);
   background: linear-gradient(180deg, #fffdfa 0%, #f8f4ed 100%);
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.04);
@@ -238,7 +238,7 @@
   height: 100%;
   object-fit: contain;
   padding: 10px;
-  border-radius: 16px;
+  border-radius: 10px;
   background: #efe6d8;
 }
 
@@ -247,7 +247,7 @@
   left: 10px;
   bottom: 10px;
   padding: 5px 9px;
-  border-radius: 999px;
+  border-radius: 10px;
   background: rgba(47, 42, 36, 0.8);
   color: #ffffff;
   font-size: 0.72rem;
@@ -292,7 +292,7 @@
 .featured-badge {
   flex-shrink: 0;
   padding: 7px 10px;
-  border-radius: 999px;
+  border-radius: 10px;
   background: #efe8db;
   color: #746958;
   font-size: 0.74rem;
@@ -329,7 +329,7 @@
   padding: 10px 12px;
   background: #ffffff;
   border: 1px solid #efe7d9;
-  border-radius: 14px;
+  border-radius: 10px;
 }
 
 .meta-chip span {
@@ -364,7 +364,7 @@
   min-height: 168px;
   padding: 14px;
   border: 1px solid #efe7d9;
-  border-radius: 20px;
+  border-radius: 10px;
   background: linear-gradient(180deg, #fffdfa 0%, #f8f4ed 100%);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.04);
 }
@@ -373,7 +373,7 @@
   width: 132px;
   height: 132px;
   object-fit: cover;
-  border-radius: 16px;
+  border-radius: 10px;
   background: #ede4d5;
 }
 
@@ -447,7 +447,7 @@
 .empty-state {
   padding: 28px 20px;
   border: 1px dashed rgba(200, 164, 107, 0.3);
-  border-radius: 18px;
+  border-radius: 10px;
   text-align: center;
   color: #7f7769;
   background: #fbf8f3;
@@ -477,7 +477,7 @@
   min-height: 52px;
   padding: 14px 16px;
   border: 1px solid rgba(200, 164, 107, 0.2);
-  border-radius: 14px;
+  border-radius: 10px;
   background: #f8f5ef;
   color: #2f2a24;
 }
@@ -492,7 +492,7 @@
   margin-top: 6px;
   padding: 10px;
   width: fit-content;
-  border-radius: 16px;
+  border-radius: 10px;
   background: #f8f5ef;
 }
 
@@ -501,7 +501,7 @@
   width: 84px;
   height: 84px;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 10px;
 }
 
 .form-btn-group {
@@ -518,7 +518,7 @@
   min-height: 46px;
   padding: 10px 16px;
   border: 1px solid transparent;
-  border-radius: 14px;
+  border-radius: 10px;
   font-weight: 700;
   cursor: pointer;
   display: inline-flex;
@@ -581,7 +581,7 @@
   .admin-table-panel,
   .admin-form-panel {
     padding: 18px 14px;
-    border-radius: 20px;
+    border-radius: 10px;
   }
 
   .product-modal-backdrop {
@@ -591,7 +591,7 @@
   .product-modal {
     width: 100%;
     max-height: calc(100vh - 32px);
-    border-radius: 22px;
+    border-radius: 10px;
   }
 
   .panel-head {
@@ -651,7 +651,7 @@
   .admin-table-panel,
   .admin-form-panel {
     padding: 16px 12px;
-    border-radius: 18px;
+    border-radius: 10px;
   }
 
   .panel-kicker {
@@ -668,13 +668,13 @@
     gap: 12px;
     min-height: 144px;
     padding: 12px;
-    border-radius: 18px;
+    border-radius: 10px;
   }
 
   .mobile-product-image {
     width: 104px;
     height: 104px;
-    border-radius: 14px;
+    border-radius: 10px;
   }
 
   .mobile-product-head {
@@ -701,7 +701,7 @@
 
   .product-modal {
     max-height: calc(100vh - 20px);
-    border-radius: 18px;
+    border-radius: 10px;
   }
 
   .modal-close {

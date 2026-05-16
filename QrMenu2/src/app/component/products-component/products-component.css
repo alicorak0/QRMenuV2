@@ -31,7 +31,7 @@ main {
 .sidebar {
   width: 100%;
   background-color: #ffffff;
-  border-radius: 12px;
+  border-radius: 10px;
   padding: 14px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
   flex-shrink: 0;
@@ -51,7 +51,7 @@ main {
   width: 100%;
   padding: 12px 12px;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   background-color: #f0f0f0;
   color: #333;
   font-weight: 500;
@@ -78,7 +78,7 @@ main {
 .menu-content {
   background-color: #ecebe9;
   padding: 22px;
-  border-radius: 20px;
+  border-radius: 10px;
   flex: 1;
 }
 
@@ -86,7 +86,7 @@ main {
   min-width: 0;
 }
 
-/* Başlık */
+/* BaÃ…Å¸lÃ„Â±k */
 .category-title h2 {
   margin: 0 0 24px;
   color: #c8a46b;
@@ -95,17 +95,17 @@ main {
   letter-spacing: -0.02em;
 }
 
-/* Ürün grid */
+/* ÃƒÅ“rÃƒÂ¼n grid */
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 18px;
 }
 
-/* Ürün kartı */
+/* ÃƒÅ“rÃƒÂ¼n kartÃ„Â± */
 .product-card {
   background-color: #ffffff;
-  border-radius: 22px;
+  border-radius: 10px;
   width: 100%;
   max-width: 430px;
   margin: 0 auto;
@@ -123,7 +123,7 @@ main {
   width: 100%;
   aspect-ratio: 1.26 / 1;
   object-fit: cover;
-  border-radius: 18px;
+  border-radius: 10px;
   margin-bottom: 16px;
   background: #111111;
 }
@@ -236,7 +236,7 @@ main {
     white-space: nowrap;
     padding: 11px 12px;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     background-color: #f0f0f0;
     color: #333;
     font-weight: 500;
@@ -260,7 +260,7 @@ main {
   .menu-content {
     width: calc(100vw - 24px);
     padding: 16px 12px;
-    border-radius: 18px;
+    border-radius: 10px;
   }
 
   .category-title h2 {
@@ -271,12 +271,12 @@ main {
   .product-card {
     max-width: 100%;
     padding: 13px 10px 14px;
-    border-radius: 16px;
+    border-radius: 10px;
   }
 
   .product-card img {
     margin-bottom: 12px;
-    border-radius: 12px;
+    border-radius: 10px;
   }
 
   .product-title {
@@ -299,7 +299,7 @@ main {
 .products-grid .product-card {
   opacity: 0;
   transform: translateY(20px);
-  /* Başlangıçta biraz aşağıda */
+  /* BaÃ…Å¸langÃ„Â±ÃƒÂ§ta biraz aÃ…Å¸aÃ„Å¸Ã„Â±da */
   animation: slideUp 0.5s ease-out forwards;
   /* Animasyonu uygula */
 }

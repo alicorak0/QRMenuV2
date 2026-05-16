@@ -1,0 +1,72 @@
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'ngx-toastr/toastr';
+
+:root {
+    --bs-border-radius: 10px;
+    --bs-border-radius-sm: 10px;
+    --bs-border-radius-lg: 10px;
+    --bs-border-radius-xl: 10px;
+    --bs-border-radius-xxl: 10px;
+    --bs-border-radius-2xl: 10px;
+    --bs-border-radius-pill: 10px;
+    --fa-border-radius: 10px;
+    --fa-counter-border-radius: 10px;
+}
+
+.toast-container .ngx-toastr,
+.toast-container .ngx-toastr.toast,
+.toast-container .toast {
+    border-radius: 10px !important;
+}
+
+html,
+body {
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+app-root,
+app-main-layout-component,
+app-header-component,
+app-footer-component {
+    display: block;
+}
+
+
+
+:root {
+  --white-color: #fff;
+  --black-color: #000;
+  --body-font: "Poppins", sans-serif;
+  --body-font: 'Poppins', sans-serif;
+  --h1-font-size: 1.75rem;
+  --normal-font-size: 1rem;
+  --small-font-size: 0.813rem;
+  --font-medium: 11700;
+}
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+    /* Arka planÃ„Â± tamamen Ã…Å¸effaf yapar (arkadaki yeÃ…Å¸ili gÃƒÂ¶sterir) */
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+    box-shadow: 0 0 0px 1000px transparent inset !important;
+    
+    /* YazÃ„Â± rengini sabitler */
+    -webkit-text-fill-color: white !important;
+    
+    /* TarayÃ„Â±cÃ„Â±nÃ„Â±n varsayÃ„Â±lan arka plan deÃ„Å¸iÃ…Å¸imini durdurur */
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Chrome'un focus olduÃ„Å¸unda eklediÃ„Å¸i ekstra katmanÃ„Â± temizlemek iÃƒÂ§in */
+input:focus {
+    background-color: transparent !important;
+}
+

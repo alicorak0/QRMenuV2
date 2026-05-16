@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { API_ROOT_URL } from '../constants/categoryConstants';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UploadPhotoService {
-  private api = 'https://localhost:44311/api/upload';
+  private api = `${API_ROOT_URL}/upload`;
 
 
   constructor(private http: HttpClient) { }

@@ -14,6 +14,7 @@ import { UploadPhotoService } from '../../../services/upload-photo-service';
 import { ResponseModel } from '../../../models/responseModel';
 import { Category } from '../../../models/categoryModel';
 import { CategoryService } from '../../../services/category-service';
+import { PRODUCT_UPLOADS_BASE_URL } from '../../../constants/categoryConstants';
 
 @Component({
   selector: 'app-product-settings',
@@ -24,6 +25,7 @@ import { CategoryService } from '../../../services/category-service';
 export class ProductSettings implements OnInit, AfterViewInit, OnDestroy {
  private readonly platformId = inject(PLATFORM_ID);
  private readonly isBrowser = isPlatformBrowser(this.platformId);
+ readonly productUploadsBaseUrl = PRODUCT_UPLOADS_BASE_URL;
  products: Product[] = [];          // Bu componentin kendi ürünler listesi
 selectedProduct: Product | null = null;
 private productsSwiper?: Swiper;
@@ -82,7 +84,7 @@ filteredCategoryId: number | null = null; // Dropdown'da seçilen kategorinin ID
 
 removeImage() {
   this.selectedFile = null;
-  this.previewUrl = `https://localhost:44311/uploads/products/noPhoto.jpg`;
+  this.previewUrl = `${this.productUploadsBaseUrl}/noPhoto.jpg`;
   this.imageRemoved = true;
   this.isDefaultImage = true;
 
@@ -98,8 +100,8 @@ getCategoryName(categoryId: number): string {
 
 getProductImageUrl(imageName: string | null | undefined): string {
   return imageName
-    ? `https://localhost:44311/uploads/products/${imageName}`
-    : 'https://localhost:44311/uploads/products/Quattro-logo.png';
+    ? `${this.productUploadsBaseUrl}/${imageName}`
+    : `${this.productUploadsBaseUrl}/Quattro-logo.png`;
 }
 
 scrollProducts(direction: 'left' | 'right') {
@@ -249,8 +251,8 @@ console.log(product.categoryId +"aşli");
  // Eğer ürünün resmi varsa previewUrl olarak ata
   // Mevcut resim preview
  this.previewUrl = product.image
-  ? `https://localhost:44311/uploads/products/${product.image}`
-  : `https://localhost:44311/uploads/products/noPhoto.jpg`;
+  ? `${this.productUploadsBaseUrl}/${product.image}`
+  : `${this.productUploadsBaseUrl}/noPhoto.jpg`;
 
 this.isDefaultImage = product.image === "noPhoto.jpg";
   
