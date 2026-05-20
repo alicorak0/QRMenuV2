@@ -49,28 +49,23 @@ constructor(private categoryService: CategoryService,private toastrService: Toas
   }
 
 
-  updateCategory() {
-  // Form geçerliliğini kontrol et
+updateCategory() {
+
   if (this.categoryUpdateForm.invalid) {
     this.toastrService.error("Form geçersiz");
     return;
   }
 
-  // Form verilerini al
   const productData = this.categoryUpdateForm.value;
 
-  // Servis aracılığıyla güncelleme isteği gönder
   this.categoryService.updateCategory(productData).subscribe({
-    next: (response) => {
+    next: () => {
       this.toastrService.success("Kategori başarıyla güncellendi");
       this.cancelSelect();
       this.loadCategories(); 
-    },
-    error: (err) => {
-      console.error(err);
-      this.toastrService.error("Kategori güncellenirken hata oluştu");
     }
   });
+
 }
 
 

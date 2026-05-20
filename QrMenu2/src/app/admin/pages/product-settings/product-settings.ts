@@ -15,6 +15,7 @@ import { ResponseModel } from '../../../models/responseModel';
 import { Category } from '../../../models/categoryModel';
 import { CategoryService } from '../../../services/category-service';
 import { PRODUCT_UPLOADS_BASE_URL } from '../../../constants/categoryConstants';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-settings',
@@ -75,8 +76,26 @@ productUpdateForm!: FormGroup;        // Reactive form
     this.productsSwiper?.destroy(true, true);
   }
 
+handleError(err: any) {     // hata yakalama backendden
+
+  if (err.status === 403) {
+    this.toastrService.error("Bu işlem için yetkiniz yok!");
+  } 
+  else if (err.status === 401) {
+    this.toastrService.warning("Lütfen giriş yapınız");
+      this.router.navigate(['/login']);
+  
+
+  } 
+  else {
+    this.toastrService.error("Bir hata oluştu");
+  }
+
+}
+
+
 constructor(private productService: ProductService,private toastrService: ToastrService,private formBuilder: FormBuilder,
-  private uploadPhotoService: UploadPhotoService,private categoryService: CategoryService) {}
+  private uploadPhotoService: UploadPhotoService,private categoryService: CategoryService,private router: Router) {}
 
 
 selectedCategoryId: number | null = null; // Ürünleri güncellemek için seçilen kategorinin ID'si
@@ -272,7 +291,6 @@ this.isDefaultImage = product.image === "noPhoto.jpg";
 
   }
 
-
 updateProduct() {
 
   if (this.productUpdateForm.invalid) {
@@ -287,31 +305,40 @@ updateProduct() {
     productData.image = "noPhoto.jpg";
   }
 
-  // 2) Yeni foto yüklendiyse
+  // 2) Yeni foto varsa
   if (this.selectedFile) {
 
-    this.uploadPhotoService.uploadImage(this.selectedFile).subscribe((res: any) => {
+    this.uploadPhotoService.uploadImage(this.selectedFile).subscribe({
+      next: (res: any) => {
 
-      productData.image = res.fileName;
+        productData.image = res.fileName;
 
-      this.productService.updateProduct(productData).subscribe(() => {
-        this.toastrService.success("Ürün güncellendi");
-        this.loadProducts();
-        this.cancelSelect();
-      });
+        this.productService.updateProduct(productData).subscribe({
+          next: () => {
+            this.toastrService.success("Ürün güncellendi");
+            this.loadProducts();
+            this.cancelSelect();
+          }
+        });
 
+      },
+      error: () => {
+        this.toastrService.error("Fotoğraf yüklenemedi");
+      }
     });
 
     return;
   }
 
-  // 3) Normal update (foto değişmedi)
-  this.productService.updateProduct(productData).subscribe(() => {
-    this.toastrService.success("Ürün güncellendi");
-    this.loadProducts();
-    this.cancelSelect();
+  // 3) normal update
+  this.productService.updateProduct(productData).subscribe({
+    next: () => {
+      this.toastrService.success("Ürün güncellendi");
+      this.filteredCategoryId = null; // 🔥 EKLE
+
+      this.loadProducts();
+      this.cancelSelect();
+    }
   });
 }
-
-
 }

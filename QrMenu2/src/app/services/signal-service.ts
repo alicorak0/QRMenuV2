@@ -15,9 +15,9 @@ export class SignalService {
 
         // Hub bağlantısını başlat
   public startConnection(): void {
-    if (!isPlatformBrowser(this.platformId) || this.hubConnection) {
-      return;
-    }
+  //  if (this.hubConnection) {
+  //   return;
+  // }
 
     this.hubConnection = new signalR.HubConnectionBuilder()
       .withUrl(MENU_HUB_URL)

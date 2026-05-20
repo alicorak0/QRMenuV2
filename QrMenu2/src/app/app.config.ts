@@ -1,3 +1,7 @@
+
+
+import { HTTP_INTERCEPTORS, withInterceptorsFromDi } from '@angular/common/http';
+import { ErrorInterceptor } from './interceptors/error-interceptor';
 import {
   ApplicationConfig,
   importProvidersFrom,
@@ -15,13 +19,20 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    provideHttpClient(withFetch()),
-    importProvidersFrom(
+    provideHttpClient(
+      withFetch(),
+      withInterceptorsFromDi()
+    ), importProvidersFrom(
       ToastrModule.forRoot({
         positionClass: 'toast-bottom-right',
         progressBar: true,
       }),
     ),
     provideClientHydration(withEventReplay()),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    },
   ],
 };

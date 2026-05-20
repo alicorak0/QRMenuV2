@@ -87,18 +87,23 @@ loadAllCategories(){
 }
 
 saveProduct(data: any) {
-  this.productService.addProduct(data).subscribe(
-    (response: any) => {
+
+  this.productService.addProduct(data).subscribe({
+    next: (response: any) => {
+
       this.toastrService.success(response.message || 'Ürün eklendi!');
       this.productAddForm.reset();
       this.selectedFile = null;
-    },
-    (error: any) => {
-      // Backend'den gelen mesajı göster
-      const msg = error.error?.message || 'Yetkiniz yok';
-      this.toastrService.error(msg);
+
     }
-  );
+  });
+
+}
+
+clearForm() { // temizleme işlemi yapan fonksiyon
+  this.productAddForm.reset();
+  this.selectedFile = null;
+
 }
 
 

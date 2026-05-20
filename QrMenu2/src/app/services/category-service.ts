@@ -20,7 +20,7 @@ export class CategoryService {
     }
 
 deleteCategory(id:number){
-  return this.http.delete<ResponseModel>(`${this.apiUrl}delete/${id}`);
+  return this.http.delete<ResponseModel>(`${this.apiUrl}delete/${id}`,{ withCredentials: true });
 
  }
 

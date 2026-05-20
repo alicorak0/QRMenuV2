@@ -131,8 +131,7 @@
                 </button>
             </div>
 
-            <form [formGroup]="productUpdateForm" class="admin-form">
-                <div class="field-group">
+<form [formGroup]="productUpdateForm" (ngSubmit)="updateProduct()"  (submit)="$event.preventDefault()" class="admin-form">                   <div class="field-group">
                     <label for="productIdUpdate">ID</label>
                     <input id="productIdUpdate" type="number" class="form-control" readonly
                         formControlName="productId" />

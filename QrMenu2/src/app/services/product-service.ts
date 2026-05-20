@@ -40,7 +40,7 @@ export class ProductService {
 
 
  deleteProduct(id:number){
-  return this.http.delete<ResponseModel>(`${this.apiUrl}delete/${id}`);
+  return this.http.delete<ResponseModel>(`${this.apiUrl}delete/${id}`,{ withCredentials: true });
 
  }
  
