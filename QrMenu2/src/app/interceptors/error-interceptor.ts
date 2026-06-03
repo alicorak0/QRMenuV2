@@ -39,10 +39,7 @@ export class ErrorInterceptor implements HttpInterceptor {
           this.toastr.error("Bu işlem için yetkiniz yok!");
         }
 
-        // 🔴 diğer hatalar
-        else {
-          this.toastr.error("Bir hata oluştu");
-        }
+        
 
         return throwError(() => error);
       })

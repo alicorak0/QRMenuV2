@@ -6,8 +6,7 @@
 
     <div class="hero-video">
       <video #bgVideo muted loop playsinline webkit-playsinline preload="metadata">
-        <source src="/6769801-uhd_3840_2160_24fps_1.mp4" type="video/mp4">
-      </video>
+<source [src]="asset.getAsset('6769801-uhd_3840_2160_24fps_1.mp4')" type="video/mp4">      </video>
     </div>
   </div>
   <div class="hero-content">
@@ -30,7 +29,7 @@
     <div class="content">
       <div class="left">
         <img 
-      [src]="productUploadsBaseUrl + '/Hikayemiz.png'"
+      [src]="asset.getAsset('Hikayemiz.png')"
          alt="">
         <h1>HİKAYEMİZ</h1>
       </div>
@@ -67,26 +66,26 @@
     <div class="gallery-grid">
       <div class="gallery-card">
         <img 
-      [src]="productUploadsBaseUrl + '/E.jpg'"
-          >
+      [src]="asset.getAsset('E.jpg')"
+         alt="">
       </div>
 
       <div class="gallery-card">
         <img 
-        [src]="productUploadsBaseUrl + '/B.jpg'"
-        >
+        [src]="asset.getAsset('B.jpg')"
+        alt="">
       </div>
 
       <div class="gallery-card">
         <img 
-        [src]="productUploadsBaseUrl + '/C.jpg'"
-        >
+        [src]="asset.getAsset('C.jpg')"
+        alt=""  >
       </div>
 
       <div class="gallery-card">
         <img 
-        [src]="productUploadsBaseUrl + '/D.jpg'"
-        >
+        [src]="asset.getAsset('D.jpg')"
+        alt="">
       </div>
     </div>
 
@@ -109,7 +108,7 @@
     <div class="rate-us">
       <h1>Quattro'yu Google'da Değerlendirin.</h1>
       <img
-      [src]="productUploadsBaseUrl + '/rate-us.png'"
+      [src]="asset.getAsset('rate-us.png')"
         alt="">
     </div>
 

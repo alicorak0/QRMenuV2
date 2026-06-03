@@ -1,8 +1,7 @@
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { PRODUCT_UPLOADS_BASE_URL } from '../../constants/categoryConstants';
-
+import { AssetService } from '../../services/asset-service';
 @Component({
   imports: [RouterModule, CommonModule],
   selector: 'app-main-menu-component',
@@ -14,11 +13,11 @@ import { PRODUCT_UPLOADS_BASE_URL } from '../../constants/categoryConstants';
 
 
 export class MainMenuComponent implements AfterViewInit {
-  readonly productUploadsBaseUrl = PRODUCT_UPLOADS_BASE_URL;
 
   @ViewChild('bgVideo')
   bgVideo!: ElementRef<HTMLVideoElement>;
-
+  
+constructor(public asset: AssetService) {}
 
   ngAfterViewInit() {
     const vid = this.bgVideo.nativeElement;

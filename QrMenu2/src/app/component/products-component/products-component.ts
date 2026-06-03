@@ -12,7 +12,7 @@ import { ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { Category } from '../../models/categoryModel';
 import { CategoryService } from '../../services/category-service';
 import { SignalService } from '../../services/signal-service';
-import { PRODUCT_UPLOADS_BASE_URL } from '../../constants/categoryConstants';
+import { AssetService } from '../../services/asset-service';  
 
 @Component({
   selector: 'app-products-component',
@@ -24,7 +24,8 @@ import { PRODUCT_UPLOADS_BASE_URL } from '../../constants/categoryConstants';
 export class ProductsComponent implements AfterViewInit {
   private readonly platformId = inject(PLATFORM_ID);
   private readonly isBrowser = isPlatformBrowser(this.platformId);
-  readonly productUploadsBaseUrl = PRODUCT_UPLOADS_BASE_URL;
+
+
   @ViewChild('bgVideo') bgVideo!: ElementRef<HTMLVideoElement>;
 
   allCategories: Category[] = [];
@@ -39,8 +40,8 @@ activeCategoryId: number = 0; // component class içinde
     private productService: ProductService,
     private categoryService: CategoryService,
     private router: Router, 
-    private signalService:SignalService //Web Socket için
-
+    private signalService:SignalService ,//Web Socket için
+    public asset: AssetService 
 
   ) { }
 

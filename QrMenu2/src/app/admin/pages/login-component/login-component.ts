@@ -65,6 +65,7 @@ export class LoginComponent {
       },
       error: err => {
         this.toastrService.error(err.error?.message || 'Giriş başarısız', 'Hata');
+        return;
       }
     });
   }
