@@ -1,20 +1,9 @@
-import { Component, inject, PLATFORM_ID } from '@angular/core';
+import { Component, inject, PLATFORM_ID, OnInit, AfterViewInit } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { Router } from '@angular/router';
-import path from 'path';
 import { Category } from '../../models/categoryModel';
 import { CategoryService } from '../../services/category-service';
-import { HttpClientModule } from '@angular/common/http';
-import { HttpClient } from '@angular/common/http'; 
-import { After } from 'v8';
 import { SignalService } from '../../services/signal-service';
-import Swiper from 'swiper';
-  import { AfterViewInit } from '@angular/core';
-import { Product } from '../../models/productModel';
-  import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import { ProductService } from '../../services/product-service';
-import { FreeMode } from 'swiper/modules';
 
 @Component({
   selector: 'app-categories-component',
@@ -22,24 +11,29 @@ import { FreeMode } from 'swiper/modules';
   templateUrl: './categories-component.html',
   styleUrl: './categories-component.css',
 })
-export class CategoriesComponent implements AfterViewInit  {
+export class CategoriesComponent implements OnInit, AfterViewInit {
   private readonly platformId = inject(PLATFORM_ID);
   private readonly isBrowser = isPlatformBrowser(this.platformId);
 
+  constructor(
+    private categoryService: CategoryService,
+    private signalService: SignalService
+  ) {}
 
-  constructor(private categoryService: CategoryService,private signalService:SignalService,private productService: ProductService ) {} // kategory gelir
-   categories: Category[] = [];
+  categories: Category[] = [];
 
-     products: Product[] = [];
-  
+  ngOnInit(): void {
+    if (!this.isBrowser) {
+      return;
+    }
 
- ngOnInit(): void {
-  if (!this.isBrowser) {
-    return;
+    this.signalService.startConnection();
+    this.signalService.onMenuUpdated(() => {
+      this.getAllCategories();
+    });
+
+    this.getAllCategories();
   }
-
-  this.getAllCategories();  
- }
 
 
 ngAfterViewInit(): void {

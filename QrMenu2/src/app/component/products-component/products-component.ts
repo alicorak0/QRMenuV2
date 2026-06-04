@@ -55,10 +55,13 @@ activeCategoryId: number = 0; // component class içinde
 
   // 2️⃣ Tüm menü güncellemelerini merkezi olarak dinle
   this.signalService.onMenuUpdated(() => {
+      this.loadAllCategories();
+
     // Ürünler değiştiğinde aktif kategorinin ürünlerini yenile
     if (this.activeKey) {
       this.loadProducts(this.activeKey);
     }
+
   });
 
   // 3️⃣ Mevcut kategorileri yükle
@@ -103,7 +106,7 @@ activeCategoryId: number = 0; // component class içinde
       } else {
         // Kategoriler yüklendi ama eşleşme yok - hatalı URL
         console.error('Kategori bulunamadı:', slug);
-        this.router.navigate(['/menu']);
+        // this.router.navigate(['/menu']);
         return;
       }
     } else {
