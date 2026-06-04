@@ -23,7 +23,7 @@
 
     <div class="products-grid">
       <div class="product-card" *ngFor="let product of products">
-          <img [src]="asset.getAsset(product.image)" alt="{{ product.image }}" loading="lazy">
+          <img [src]="asset.getProduct(product.image)" alt="{{ product.image }}" loading="lazy">
         <h3 class="product-title">{{ product.productName }}</h3>
         <p class="product-description">{{ product.description }}</p>
         <div class="product-footer">
