@@ -243,7 +243,7 @@ onCategoryChange() {
       this.productService.deleteProduct(product.productId)
   .subscribe((response: ResponseModel) => {
       this.toastrService.success(`${product.productName} Başarıyla Silindi`);
-      this.toastrService.info(response.message);   
+      // this.toastrService.info(response.message);   
       this.cancelSelect(); // reset 
       this.loadProducts();
 

@@ -92,28 +92,22 @@ activeCategoryId: number = 0; // component class içinde
   }
 
   loadProducts(slug: string) {
-    // Strategy: Try to find exact category match, or use slug as fallback
-    
+    // ✅ Kategoriler henüz yüklenmemişse bekleme logik ekle
+    if (!this.allCategories || this.allCategories.length === 0) {
+      console.log('Kategoriler henüz yüklenmedi. loadProducts aşaması atlanıyor.');
+      return; // loadAllCategories() çağrısında retry yapılacak
+    }
+
     let categoryName = slug;
-    
-    // If categories are loaded, try to find exact match
-    if (this.allCategories.length > 0) {
-      const foundCategory = this.allCategories.find(c => this.slugify(c.categoryName) === slug);
-      
-      if (foundCategory) {
-        categoryName = foundCategory.categoryName;
-        this.activeCategoryId = foundCategory.categoryId;
-      } else {
-        // Kategoriler yüklendi ama eşleşme yok - hatalı URL
-        console.error('Kategori bulunamadı:', slug);
-        // this.router.navigate(['/menu']);
-        return;
-      }
+    const foundCategory = this.allCategories.find(c => this.slugify(c.categoryName) === slug);
+
+    if (foundCategory) {
+      categoryName = foundCategory.categoryName;
+      this.activeCategoryId = foundCategory.categoryId;
     } else {
-      // Kategoriler henüz yüklenmedi - slug'ı kategori adı olarak kullan (fallback)
-      // Slug'ı normal forma çevir: 'tatlilar' -> 'Tatlilar'
+      // ✅ Bu durumda fallback olarak slug'ı kullan, "hatalı URL" diye karar verme
       categoryName = slug.charAt(0).toUpperCase() + slug.slice(1);
-      console.log('Kategoriler henüz yüklenmedi. Slug kullanılıyor:', categoryName);
+      console.warn('Kategori slug bulunamadı, fallback kullanılıyor:', slug, '->', categoryName);
     }
 
     // Backend'e ürünleri iste
