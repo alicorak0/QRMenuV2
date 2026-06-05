@@ -8,9 +8,10 @@
 
  //export const API_BASE_URL = 'https://api-quattrocafe.nufusistatistikleri.online';
 export const API_BASE_URL = 'https://localhost:44311';
-export const API_ROOT_URL = `${API_BASE_URL}/api/quattrocafe`;
-export const ASSET_UPLOADS_URL = `${API_BASE_URL}/uploads/quattrocafe/assets`;
-export const PRODUCT_UPLOADS_BASE_URL = `${API_BASE_URL}/uploads/quattrocafe/products`;
+export const API_ROOT_URL = `${API_BASE_URL}/api/efemkasap`;
+export const ASSET_UPLOADS_URL = `${API_BASE_URL}/uploads/efemkasap/assets`;
+export const PRODUCT_UPLOADS_BASE_URL = `${API_BASE_URL}/uploads/efemkasap/products`;
 export const MENU_HUB_URL = `${API_BASE_URL}/menuhub`;
+export const TENANT_SLUG = 'efemkasap';
 
 

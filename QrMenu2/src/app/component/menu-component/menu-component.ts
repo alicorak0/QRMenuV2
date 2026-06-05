@@ -12,6 +12,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { CategoryService } from '../../services/category-service';
 import { SignalService } from '../../services/signal-service';
 import { AssetService } from '../../services/asset-service';
+import { TENANT_SLUG } from '../../constants/categoryConstants';
 @Component({
   selector: 'app-menu-component',
   imports: [CommonModule, RouterModule, RouterOutlet],
@@ -59,7 +60,7 @@ export class MenuComponent implements AfterViewInit {
   this.loadFeaturedProducts();
 
   // 🔹 SignalR bağlantısını başlat
-  this.signalService.startConnection();
+  this.signalService.startConnection(TENANT_SLUG);
 
   // 🔹 Sadece MenuUpdated event dinleniyor
   this.signalService.onMenuUpdated(() => {

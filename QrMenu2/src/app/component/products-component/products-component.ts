@@ -12,7 +12,8 @@ import { ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { Category } from '../../models/categoryModel';
 import { CategoryService } from '../../services/category-service';
 import { SignalService } from '../../services/signal-service';
-import { AssetService } from '../../services/asset-service';  
+import { AssetService } from '../../services/asset-service';
+import { TENANT_SLUG } from '../../constants/categoryConstants';
 
 @Component({
   selector: 'app-products-component',
@@ -51,7 +52,7 @@ activeCategoryId: number = 0; // component class içinde
   }
 
   // 1️⃣ SignalR bağlantısını başlat
-  this.signalService.startConnection();
+  this.signalService.startConnection(TENANT_SLUG);
 
   // 2️⃣ Tüm menü güncellemelerini merkezi olarak dinle
   this.signalService.onMenuUpdated(() => {
