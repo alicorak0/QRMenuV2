@@ -51,11 +51,11 @@ activeCategoryId: number = 0; // component class içinde
     return;
   }
 
-  // 1️⃣ SignalR bağlantısını başlat
-  this.signalService.startConnection(TENANT_SLUG);
+  // 1️⃣ SignalR bağlantısını başlat (idempotent)
+  void this.signalService.startConnection(TENANT_SLUG);
 
   // 2️⃣ Tüm menü güncellemelerini merkezi olarak dinle
-  this.signalService.onMenuUpdated(() => {
+  this.signalService.on('MenuUpdated', () => {
       this.loadAllCategories();
 
     // Ürünler değiştiğinde aktif kategorinin ürünlerini yenile

@@ -6,8 +6,8 @@
 //   { id: 5, name: 'Soslar', pathUrl: 'sauces' }
 // ];
 
- //export const API_BASE_URL = 'https://api-quattrocafe.nufusistatistikleri.online';
-export const API_BASE_URL = 'https://localhost:44311';
+ export const API_BASE_URL = 'https://api-quattrocafe.nufusistatistikleri.online';
+//export const API_BASE_URL = 'https://localhost:44311';
 export const API_ROOT_URL = `${API_BASE_URL}/api/efemkasap`;
 export const ASSET_UPLOADS_URL = `${API_BASE_URL}/uploads/efemkasap/assets`;
 export const PRODUCT_UPLOADS_BASE_URL = `${API_BASE_URL}/uploads/efemkasap/products`;

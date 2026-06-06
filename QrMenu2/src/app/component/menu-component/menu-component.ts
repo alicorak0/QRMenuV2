@@ -60,10 +60,10 @@ export class MenuComponent implements AfterViewInit {
   this.loadFeaturedProducts();
 
   // 🔹 SignalR bağlantısını başlat
-  this.signalService.startConnection(TENANT_SLUG);
+  void this.signalService.startConnection(TENANT_SLUG);
 
   // 🔹 Sadece MenuUpdated event dinleniyor
-  this.signalService.onMenuUpdated(() => {
+  this.signalService.on('MenuUpdated', () => {
     // Kategoriler veya ürünler değiştiğinde yenile
     this.loadFeaturedProducts();
   });

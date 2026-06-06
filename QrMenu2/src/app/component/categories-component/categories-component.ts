@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { Category } from '../../models/categoryModel';
 import { CategoryService } from '../../services/category-service';
 import { SignalService } from '../../services/signal-service';
+import { TENANT_SLUG } from '../../constants/categoryConstants';
 
 @Component({
   selector: 'app-categories-component',
@@ -27,8 +28,9 @@ export class CategoriesComponent implements OnInit, AfterViewInit {
       return;
     }
 
-    this.signalService.startConnection();
-    this.signalService.onMenuUpdated(() => {
+    // start connection (idempotent) and register menu update handler
+    void this.signalService.startConnection(TENANT_SLUG);
+    this.signalService.on('MenuUpdated', () => {
       this.getAllCategories();
     });
 
